@@ -1,0 +1,2 @@
+"String with 
+ before last double quotes should be wrong"

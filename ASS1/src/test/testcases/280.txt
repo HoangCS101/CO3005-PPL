@@ -1,0 +1,23 @@
+func fibonacciSequence(number n)
+        begin
+            var a <- 0
+            var b <- 1
+            for i until n by 1
+                writeNumber(a)
+                var temp <- a + b
+                a <- b
+                b <- temp
+            writeString(",")
+        end
+
+        func main()
+        begin
+            writeString("Enter the number of terms for the Fibonacci sequence: ")
+            number terms <- readNumber()
+
+            writeString("Fibonacci sequence: ")
+            fibonacciSequence(terms)
+
+            return 0
+        end
+        

@@ -1,0 +1,9 @@
+func main()
+        begin
+            writeString("Enter a number for Fibonacci: ")
+            var fibInput <- readNumber()
+            var fibResult <- fibonacci(fibInput)
+            writeString("Fibonacci result: ")
+            writeNumber(fibResult)
+        end
+        

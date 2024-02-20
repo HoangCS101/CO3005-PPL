@@ -1,0 +1,5 @@
+var greeting <- "Hello"
+        var name <- "World"
+        var message <- greeting + " " + name + "!"
+        writeString(message)
+        

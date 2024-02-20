@@ -1,0 +1,10 @@
+number myList[7] <- [9, 5, 4, 1, 3, 2]
+        heapify(myList)
+        print(myList)
+        print(myList[0])
+
+        heappush(myList, 10)
+        x = heappop(myList)
+        print(x)
+
+        

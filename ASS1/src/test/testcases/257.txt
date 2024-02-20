@@ -1,0 +1,4 @@
+var fact <- factorial(input)
+        writeString("Factorial: ")
+        writeNumber(fact)
+        

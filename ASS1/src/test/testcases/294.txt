@@ -1,0 +1,30 @@
+func calculateCircleArea(number radius)
+        begin
+            var area <- 3.14 * pow(radius,2)
+            return area
+        end
+
+        func calculateCircleCircumference(number radius)
+        begin
+            var circumference <- 2 * 3.14 * radius
+            return circumference
+        end
+
+        func main()
+        begin
+            writeString("Enter the radius of the circle: ")
+            number circleRadius <- readNumber()
+
+            var circleArea <- calculateCircleArea(circleRadius)
+            var circleCircumference <- calculateCircleCircumference(circleRadius)
+
+            writeString("Area of the circle: ")
+            writeNumber(circleArea)
+            
+            writeString("Circumference of the circle: ")
+            writeNumber(circleCircumference)
+
+            return 0
+        end
+
+        

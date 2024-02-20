@@ -1,0 +1,4 @@
+func recursion(number a)
+        if (a >= 100) return a + recursion(a - 1)
+        else return 1
+        

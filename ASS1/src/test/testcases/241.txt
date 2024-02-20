@@ -1,0 +1,6 @@
+func yandex(number code)
+        begin
+            sussyImage <- Chiori
+            return insanity
+        end
+        

@@ -1,0 +1,7 @@
+begin
+        for i until 81 by 4 + 5 - 8 writeString("dwayne the rocc joystick")
+        if (a >= 100) continue
+        else break
+        func dec(number int, number exp) begin various <- a end
+        end
+        

@@ -1,0 +1,2 @@
+bool arrash[5] <- [true,false,false,false,true]
+        

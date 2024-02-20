@@ -1,0 +1,6 @@
+var isTrue <- true
+        var isFalse <- false
+
+        if (isTrue and (not isFalse)) writeString("Boolean expression: True")
+        else writeString("Boolean expression: False")
+        

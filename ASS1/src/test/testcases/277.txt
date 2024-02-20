@@ -1,0 +1,12 @@
+func calcArea(number a, number b)
+        begin
+            return a * b
+        end
+        func main()
+        begin
+            writeString("Area is: ")
+            number result <- calcArea(6 , 9)
+            writeNumber(result)
+            return 0
+        end
+        

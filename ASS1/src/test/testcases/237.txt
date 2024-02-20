@@ -1,0 +1,2 @@
+string BigBang[3] <- ["haru haru","blue","loser"]
+        

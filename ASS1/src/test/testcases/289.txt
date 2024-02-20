@@ -1,0 +1,20 @@
+func isPalindrome(string str)
+        begin
+            var reversed <- ""
+            for i until length(str) by -1
+                reversed <- reversed ... str[i - 1]
+
+            return str == reversed
+        end
+
+        func main()
+        begin
+            writeString("Enter a string to check for palindrome: ")
+            string input <- readString()
+
+            if (isPalindrome(input)) writeString("Yes, it's a palindrome")
+            else writeString("No, it's not a palindrome")
+
+            return 0
+        end
+        

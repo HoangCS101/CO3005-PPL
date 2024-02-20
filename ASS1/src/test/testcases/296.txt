@@ -1,0 +1,2 @@
+if (a == c) return 6 elif (b == c) continue else break
+        

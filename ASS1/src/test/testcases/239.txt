@@ -1,0 +1,2 @@
+func index(bool true , number DIGIT)
+        

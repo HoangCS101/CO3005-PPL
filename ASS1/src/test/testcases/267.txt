@@ -1,0 +1,8 @@
+func main()
+        begin
+            writeString("NumberArray: ")
+            for i until 9 by 1
+                writeNumber(i + 124)
+                writeString("1003")
+        end
+        

@@ -1,0 +1,22 @@
+func calcAbsoluteDifference(number x, number y)
+        begin
+            var difference <- x - y
+            if (difference < 0) return -difference
+            else return difference
+        end
+
+        func main()
+        begin
+            writeString("Enter the first number: ")
+            number num1 <- readNumber()
+
+            writeString("Enter the second number: ")
+            number num2 <- readNumber()
+
+            writeString("Absolute difference is: ")
+            number result <- calcAbsoluteDifference(num1, num2)
+            writeNumber(result)
+
+            return 0
+        end
+        

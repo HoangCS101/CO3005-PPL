@@ -1,0 +1,23 @@
+func calcVolume(number length, number width, number height)
+        begin
+            return length * width * height
+        end
+
+        func main()
+        begin
+            writeString("Enter the length of the rectangular prism: ")
+            number prismLength <- readNumber()
+
+            writeString("Enter the width of the rectangular prism: ")
+            number prismWidth <- readNumber()
+
+            writeString("Enter the height of the rectangular prism: ")
+            number prismHeight <- readNumber()
+
+            writeString("Volume is: ")
+            number result <- calcVolume(prismLength, prismWidth, prismHeight)
+            writeNumber(result)
+
+            return 0
+        end
+        

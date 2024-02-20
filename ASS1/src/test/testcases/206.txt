@@ -1,0 +1,6 @@
+if (a == 69) for c until c >= 20 by 96 return
+        elif (b = 420) kakanku <- 123
+        elif (ambatunat = "imbacsi~") continue
+        elif (true == false) break
+        else print("breaking bad")
+        

@@ -1,0 +1,20 @@
+func kilometersToMiles(number kilometers)
+        begin
+            var miles <- kilometers * 0.621371
+            return miles
+        end
+
+        func main()
+        begin
+            writeString("Enter the distance in kilometers: ")
+            number string distanceKm <- readNumber()
+
+            var distanceMiles <- kilometersToMiles(distanceKm)
+
+            writeString("Distance in miles: ")
+            writeNumber(distanceMiles)
+
+            return 0
+        end
+
+        

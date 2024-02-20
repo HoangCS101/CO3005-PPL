@@ -1,0 +1,12 @@
+func add(number x, number y)
+        return x + y
+
+        func subtract(number x, number y)
+        return x - y
+
+        func multiply(number x, number y)
+        return x * y
+
+        func divide(number x, number y)
+        return x / y
+        

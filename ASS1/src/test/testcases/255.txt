@@ -1,0 +1,8 @@
+func isPrime(number n)
+        begin
+            if (n <= 1) return false
+            for i until n by 1
+                if ((i > 1) and (n % i = 0)) return false
+            return true
+        end
+        

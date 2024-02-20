@@ -1,0 +1,2 @@
+fomula <- pow(a , 3)
+        

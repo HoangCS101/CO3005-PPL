@@ -1,0 +1,4 @@
+string list1[3] <- ["apple", "banana", "cherry"]
+        bool list2[3] <- [true, false, false]
+        number list3[5] <- [1, 5, 7, 9, 3]
+        

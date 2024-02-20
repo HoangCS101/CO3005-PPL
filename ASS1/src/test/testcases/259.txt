@@ -1,0 +1,6 @@
+number numbers[5] <- [1, 2, 3, 4, 5]
+        writeString("Array elements: ")
+        for i until 5 by 1
+            writeNumber(numbers[i])
+            writeString(",")
+        

@@ -1,0 +1,7 @@
+func main(number a, number b)
+        begin
+        return 2
+        if (a == c) break
+        ## i like cat continue
+        end
+        

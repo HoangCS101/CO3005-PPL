@@ -1,0 +1,4 @@
+bool dream
+        if (I and U == true) dream = true
+        else dream = false
+        

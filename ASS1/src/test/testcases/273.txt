@@ -1,0 +1,4 @@
+writeString("Enter your name: ")
+        string name <- readString()
+        print(name)
+        

@@ -1,0 +1,13 @@
+func isEven(number x)
+        return (x % 2 = 0)
+
+        func main()
+        begin
+            writeString("Enter a number to check if it's even: ")
+            var num <- readNumber()
+
+            if (isEven(num)) writeString("The number is even")
+            else writeString("The number is odd")
+            return 0
+        end
+        

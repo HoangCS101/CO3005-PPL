@@ -1,0 +1,20 @@
+func celsiusToFahrenheit(number celsius)
+        begin
+            var fahrenheit <- (celsius * 9/5) + 32
+            return fahrenheit
+        end
+
+        func main()
+        begin
+            writeString("Enter the temperature in Celsius: ")
+            number tempCelsius <- readNumber()
+
+            var tempFahrenheit <- celsiusToFahrenheit(tempCelsius)
+
+            writeString("Temperature in Fahrenheit: ")
+            writeNumber(tempFahrenheit)
+
+            return 0
+        end
+
+        
