@@ -241,7 +241,7 @@ class ZCodeParser ( Parser ):
     RULE_expr5 = 44
     RULE_expr6 = 45
     RULE_expr7 = 46
-    RULE_idxop = 47
+    RULE_expr8 = 47
     RULE_expr9 = 48
     RULE_relationals = 49
     RULE_typ = 50
@@ -256,7 +256,7 @@ class ZCodeParser ( Parser ):
                    "continuestmt", "returnstmt", "blockstmt", "funccall", 
                    "paramdecl", "paramlist", "paramprime", "param", "expr", 
                    "expr1", "expr2", "expr3", "expr4", "expr5", "expr6", 
-                   "expr7", "idxop", "expr9", "relationals", "typ", "literals" ]
+                   "expr7", "expr8", "expr9", "relationals", "typ", "literals" ]
 
     EOF = Token.EOF
     T__0=1
@@ -2921,8 +2921,8 @@ class ZCodeParser ( Parser ):
         def LBRACKET(self):
             return self.getToken(ZCodeParser.LBRACKET, 0)
 
-        def idxop(self):
-            return self.getTypedRuleContext(ZCodeParser.IdxopContext,0)
+        def expr8(self):
+            return self.getTypedRuleContext(ZCodeParser.Expr8Context,0)
 
 
         def RBRACKET(self):
@@ -2972,7 +2972,7 @@ class ZCodeParser ( Parser ):
                 self.state = 390
                 self.match(ZCodeParser.LBRACKET)
                 self.state = 391
-                self.idxop()
+                self.expr8()
                 self.state = 392
                 self.match(ZCodeParser.RBRACKET)
                 pass
@@ -2993,7 +2993,7 @@ class ZCodeParser ( Parser ):
         return localctx
 
 
-    class IdxopContext(ParserRuleContext):
+    class Expr8Context(ParserRuleContext):
         __slots__ = 'parser'
 
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
@@ -3007,20 +3007,20 @@ class ZCodeParser ( Parser ):
         def COMMA(self):
             return self.getToken(ZCodeParser.COMMA, 0)
 
-        def idxop(self):
-            return self.getTypedRuleContext(ZCodeParser.IdxopContext,0)
+        def expr8(self):
+            return self.getTypedRuleContext(ZCodeParser.Expr8Context,0)
 
 
         def getRuleIndex(self):
-            return ZCodeParser.RULE_idxop
+            return ZCodeParser.RULE_expr8
 
 
 
 
-    def idxop(self):
+    def expr8(self):
 
-        localctx = ZCodeParser.IdxopContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 94, self.RULE_idxop)
+        localctx = ZCodeParser.Expr8Context(self, self._ctx, self.state)
+        self.enterRule(localctx, 94, self.RULE_expr8)
         try:
             self.state = 402
             self._errHandler.sync(self)
@@ -3032,7 +3032,7 @@ class ZCodeParser ( Parser ):
                 self.state = 398
                 self.match(ZCodeParser.COMMA)
                 self.state = 399
-                self.idxop()
+                self.expr8()
                 pass
 
             elif la_ == 2:

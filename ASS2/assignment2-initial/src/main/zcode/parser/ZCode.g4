@@ -88,8 +88,8 @@ expr3: expr3 (PLUS | MINUS) expr4 | expr4;
 expr4: expr4 (MULTIPLY | DIVIDE | MODULO) expr5 | expr5;
 expr5: NOT expr5 | expr6;
 expr6: MINUS expr6 | expr7;
-expr7: (IDENTIFIER | funccall) LBRACKET idxop RBRACKET | expr9; // expr7 is basically the representation of an array element
-idxop: expr COMMA idxop | expr;
+expr7: (IDENTIFIER | funccall) LBRACKET expr8 RBRACKET | expr9; // expr7 is basically the representation of an array element
+expr8: expr COMMA expr8 | expr;
 expr9: literals | LPAREN expr RPAREN | funccall | IDENTIFIER;
 
 relationals: ASSIGN | EQUAL| NOT_EQUAL | LESS_THAN | GREATER_THAN | LESS_THAN_OR_EQUAL | GREATER_THAN_OR_EQUAL ;
