@@ -103,10 +103,10 @@ def serializedATN():
         1,0,0,0,234,47,1,0,0,0,235,238,3,102,51,0,236,238,3,42,21,0,237,
         235,1,0,0,0,237,236,1,0,0,0,238,49,1,0,0,0,239,240,3,78,39,0,240,
         241,5,38,0,0,241,242,3,78,39,0,242,51,1,0,0,0,243,244,5,24,0,0,244,
-        245,3,54,27,0,245,257,3,2,1,0,246,247,5,26,0,0,247,248,3,54,27,0,
+        245,3,54,27,0,245,252,3,2,1,0,246,247,5,26,0,0,247,248,3,54,27,0,
         248,249,3,2,1,0,249,251,1,0,0,0,250,246,1,0,0,0,251,254,1,0,0,0,
-        252,250,1,0,0,0,252,253,1,0,0,0,253,255,1,0,0,0,254,252,1,0,0,0,
-        255,256,5,25,0,0,256,258,3,2,1,0,257,252,1,0,0,0,257,258,1,0,0,0,
+        252,250,1,0,0,0,252,253,1,0,0,0,253,257,1,0,0,0,254,252,1,0,0,0,
+        255,256,5,25,0,0,256,258,3,2,1,0,257,255,1,0,0,0,257,258,1,0,0,0,
         258,53,1,0,0,0,259,260,5,47,0,0,260,261,3,78,39,0,261,262,5,48,0,
         0,262,55,1,0,0,0,263,264,5,19,0,0,264,265,5,51,0,0,265,266,5,20,
         0,0,266,267,3,78,39,0,267,268,5,21,0,0,268,270,3,78,39,0,269,271,
@@ -1740,14 +1740,14 @@ class ZCodeParser ( Parser ):
                 return self.getTypedRuleContext(ZCodeParser.StmtContext,i)
 
 
-        def ELSE(self):
-            return self.getToken(ZCodeParser.ELSE, 0)
-
         def ELIF(self, i:int=None):
             if i is None:
                 return self.getTokens(ZCodeParser.ELIF)
             else:
                 return self.getToken(ZCodeParser.ELIF, i)
+
+        def ELSE(self):
+            return self.getToken(ZCodeParser.ELSE, 0)
 
         def getRuleIndex(self):
             return ZCodeParser.RULE_ifstmt
@@ -1768,24 +1768,24 @@ class ZCodeParser ( Parser ):
             self.ifexpr()
             self.state = 245
             self.stmt()
+            self.state = 252
+            self._errHandler.sync(self)
+            _la = self._input.LA(1)
+            while _la==26:
+                self.state = 246
+                self.match(ZCodeParser.ELIF)
+                self.state = 247
+                self.ifexpr()
+                self.state = 248
+                self.stmt()
+                self.state = 254
+                self._errHandler.sync(self)
+                _la = self._input.LA(1)
+
             self.state = 257
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if _la==25 or _la==26:
-                self.state = 252
-                self._errHandler.sync(self)
-                _la = self._input.LA(1)
-                while _la==26:
-                    self.state = 246
-                    self.match(ZCodeParser.ELIF)
-                    self.state = 247
-                    self.ifexpr()
-                    self.state = 248
-                    self.stmt()
-                    self.state = 254
-                    self._errHandler.sync(self)
-                    _la = self._input.LA(1)
-
+            if _la==25:
                 self.state = 255
                 self.match(ZCodeParser.ELSE)
                 self.state = 256

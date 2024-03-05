@@ -60,7 +60,7 @@ arrayelement: literals | array;
 assignstmt: expr ARROW expr ;
 		
 	// If statement
-ifstmt: IF ifexpr stmt ((ELIF ifexpr stmt)* (ELSE stmt))?;
+ifstmt: IF ifexpr stmt (ELIF ifexpr stmt)* (ELSE stmt)?;
 ifexpr: LPAREN expr RPAREN ;
 
 	// For statement
