@@ -1,1 +1,23 @@
-number a
+func main()
+        begin 
+        if (a = b) 
+            number a
+        elif (a > b)
+            begin
+                if a - b = 4
+                    begin
+                        a <- b * 123.e45
+                        return 1
+                    end
+                elif a - b = 3
+                    return 2
+                else 
+                    return 3
+            break
+            end ## test break
+        elif (a + b = 10)
+            return 4
+        else
+            return 0
+        end
+        

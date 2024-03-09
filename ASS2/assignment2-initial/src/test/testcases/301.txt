@@ -1,0 +1,8 @@
+if (a = b) a + 2
+        elif (a = 3) return 5
+        elif (a = 4)
+            begin
+                continue
+            end
+        else return 100
+        
