@@ -126,25 +126,24 @@ class ASTGeneration(ZCodeVisitor):
     
     # arraydecl: typ IDENTIFIER LBRACKET arraydim RBRACKET ARROW array ;
     def visitArraydecl(self, ctx: ZCodeParser.ArraydeclContext):
-        return []
+        varTyp = ArrayType(self.visit(ctx.arraydim()) , self.visit(ctx.typ()))
+        return VarDecl(name=Id(ctx.IDENTIFIER().getText()) , varType=varTyp , varInit=self.visit(ctx.array()) )
     
-    # arraydim: NUMBER_LITERAL COMMA arraydim | NUMBER_LITERAL;
+    # arraydim: NUMBER_LITERAL (COMMA NUMBER_LITERAL)*;
     def visitArraydim(self, ctx: ZCodeParser.ArraydimContext):
-        if ctx.getChildCount() == 1:
-            return [NumberLiteral(ctx.NUMBER_LITERAL().getText())]
-        return [NumberLiteral(ctx.NUMBER_LITERAL().getText())] + self.visit(ctx.arraydim())
+        res = []
+        for n in ctx.NUMBER_LITERAL():
+            res += [float(n.getText())]
+        return res
     
-    # array: LBRACKET arraylist RBRACKET ;
+    # array: LBRACKET arrayelement (COMMA arrayelement)* RBRACKET ;
     def visitArray(self, ctx: ZCodeParser.ArrayContext):
-        return ArrayLiteral(self.visit(ctx.arraylist()))
+        res = []
+        for ele in ctx.arrayelement():
+            res += [self.visit(ele)]
+        return ArrayLiteral(res)
     
-    # arraylist: arrayelement COMMA arraylist |;
-    def visitArraylist(self, ctx: ZCodeParser.ArraylistContext):
-        if ctx.getChildCount() == 0:
-            return []
-        return [self.visit(ctx.arrayelement())] + self.visit(ctx.arraylist())
-    
-    # arrayelement: literals | array;
+    # arrayelement: expr | array;
     def visitArrayelement(self, ctx: ZCodeParser.ArrayelementContext):
         return self.visit(ctx.getChild(0))
     
@@ -294,7 +293,7 @@ class ASTGeneration(ZCodeVisitor):
             return [self.visit(ctx.expr())]
         return [self.visit(ctx.expr())] + self.visit(ctx.expr8())
     
-    # expr9: literals | LPAREN expr RPAREN | funccall | IDENTIFIER;
+    # expr9: literals | LPAREN expr RPAREN | funccall | IDENTIFIER ;
     def visitExpr9(self, ctx:ZCodeParser.Expr9Context):
         if ctx.literals():
             return self.visit(ctx.literals())

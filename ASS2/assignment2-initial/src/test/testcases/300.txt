@@ -17,7 +17,6 @@ func main()
             end ## test break
         elif (a + b = 10)
             return 4
-        else
-            return 0
+        else return 0
         end
         

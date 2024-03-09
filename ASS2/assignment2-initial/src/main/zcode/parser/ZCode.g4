@@ -58,10 +58,9 @@ writestr: 'writeString(' expr ')';
 // Array declaration
 arraydecl:
 	typ IDENTIFIER LBRACKET arraydim RBRACKET ARROW array;
-arraydim: NUMBER_LITERAL COMMA arraydim | NUMBER_LITERAL;
-array: LBRACKET arraylist RBRACKET;
-arraylist: arrayelement COMMA arrayelement |;
-arrayelement: literals | array;
+arraydim: NUMBER_LITERAL (COMMA NUMBER_LITERAL)*;
+array: LBRACKET arrayelement (COMMA arrayelement)* RBRACKET;
+arrayelement: expr | array;
 
 // Assignment statement
 assignstmt: expr ARROW expr;

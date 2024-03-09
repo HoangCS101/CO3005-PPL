@@ -24,8 +24,7 @@ class ASTGenSuite(unittest.TestCase):
             end ## test break
         elif (a + b = 10)
             return 4
-        else
-            return 0
+        else return 0
         end
         """
         expect = str(Program([VarDecl(Id("a"), NumberType())]))
@@ -42,3 +41,9 @@ class ASTGenSuite(unittest.TestCase):
         """
         expect = str(Program([VarDecl(Id("a"), NumberType())]))
         self.assertTrue(TestAST.test(input, expect, 301))
+        
+    def test_simple_program2(self):
+        input = """number a[5,5] <- [1, 2, 3, 4, 5]
+        """
+        expect = str(Program([VarDecl(Id("a"), NumberType())]))
+        self.assertTrue(TestAST.test(input, expect, 302))
