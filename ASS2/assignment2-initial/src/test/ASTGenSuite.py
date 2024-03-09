@@ -47,3 +47,25 @@ class ASTGenSuite(unittest.TestCase):
         """
         expect = str(Program([VarDecl(Id("a"), NumberType())]))
         self.assertTrue(TestAST.test(input, expect, 302))
+        
+    def test_simple_program3(self):
+        input = """func main() begin
+        number a
+        if (5 < 2) a <- 1
+        elif (not true) a <- 2
+        elif ("h" == "6") a <- 3
+        end
+        """
+        expect = str(Program([VarDecl(Id("a"), NumberType())]))
+        self.assertTrue(TestAST.test(input, expect, 303))
+        
+    def test_simple_program4(self):
+        input = """func inc(number a) return a + 1
+        func main() begin
+        var a <- 1
+        inc(a)
+        writeNumber(a)
+        end
+        """
+        expect = str(Program([VarDecl(Id("a"), NumberType())]))
+        self.assertTrue(TestAST.test(input, expect, 304))

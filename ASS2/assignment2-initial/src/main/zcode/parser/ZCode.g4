@@ -33,12 +33,12 @@ im_vardecl: VAR IDENTIFIER ARROW expr;
 im_dydecl: DYNAMIC IDENTIFIER (ARROW expr)?;
 
 // Function declaration
-funcdecl: FUNC IDENTIFIER arg funcend?;
+funcdecl: FUNC IDENTIFIER arg NEWLINE? funcend;
 arg: LPAREN arglist RPAREN;
 arglist: argprime |;
 argprime: argment COMMA argprime | argment;
 argment: typ expr;
-funcend: returnstmt | blockstmt;
+funcend: returnstmt | blockstmt |;
 
 // Built-in function
 builtin:
@@ -48,12 +48,12 @@ builtin:
 	| writebool
 	| readstr
 	| writestr;
-readnum: 'readNumber()';
-writenum: 'writeNumber(' expr ')';
-readbool: 'readBool()';
-writebool: 'writeBool(' expr ')';
-readstr: 'readString()';
-writestr: 'writeString(' expr ')';
+readnum: 'readNumber' LPAREN RPAREN;
+writenum: 'writeNumber' LPAREN expr RPAREN;
+readbool: 'readBool' LPAREN RPAREN;
+writebool: 'writeBool' LPAREN expr RPAREN;
+readstr: 'readString' LPAREN RPAREN;
+writestr: 'writeString' LPAREN expr RPAREN;
 
 // Array declaration
 arraydecl:
@@ -78,7 +78,7 @@ otherstmt: breakstmt | continuestmt | returnstmt | blockstmt;
 breakstmt: BREAK;
 continuestmt: CONTINUE;
 returnstmt: RETURN expr?;
-blockstmt: BEGIN NEWLINE? stmt*? NEWLINE? END;
+blockstmt: BEGIN NEWLINE? stmt*? NEWLINE? END NEWLINE?;
 
 // Function call statement
 funccall: IDENTIFIER LPAREN paramlist RPAREN | builtin;

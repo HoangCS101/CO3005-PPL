@@ -47,11 +47,9 @@ class ASTGeneration(ZCodeVisitor):
         return VarDecl(Id(ctx.IDENTIFIER().getText()) , modifier=ctx.DYNAMIC().getText())
 
 
-    # funcdecl: FUNC IDENTIFIER arg funcend?;
+    # funcdecl: FUNC IDENTIFIER arg NEWLINE funcend;
     def visitFuncdecl(self, ctx:ZCodeParser.FuncdeclContext):
-        if ctx.funcend():
-            return FuncDecl(Id(ctx.IDENTIFIER().getText()) , self.visit(ctx.arg()) , self.visit(ctx.funcend()))
-        return FuncDecl(Id(ctx.IDENTIFIER().getText()) , self.visit(ctx.arg()))
+        return FuncDecl(Id(ctx.IDENTIFIER().getText()) , self.visit(ctx.arg()) , self.visit(ctx.funcend()))
 
     # arg: LPAREN arglist RPAREN;
     def visitArg(self, ctx:ZCodeParser.ArgContext):
@@ -77,9 +75,11 @@ class ASTGeneration(ZCodeVisitor):
         return VarDecl(self.visit(ctx.expr()) , self.visit(ctx.typ()))
 
 
-    # funcend: returnstmt | blockstmt ;
+    # funcend: returnstmt | blockstmt | ;
     def visitFuncend(self, ctx:ZCodeParser.FuncendContext):
-        if ctx.returnstmt():
+        if ctx.getChildCount() == 0:
+            return None
+        elif ctx.returnstmt():
             return self.visit(ctx.returnstmt())
         return self.visit(ctx.blockstmt())
 
@@ -92,37 +92,37 @@ class ASTGeneration(ZCodeVisitor):
 	# | readstr
 	# | writestr;
     def visitBuiltin(self, ctx:ZCodeParser.BuiltinContext):
-        return self.visit(ctx.getChild())
+        return self.visit(ctx.getChild(0))
 
 
-    # Visit a parse tree produced by ZCodeParser#readnum.
+    # readnum: 'readNumber' LPAREN RPAREN;
     def visitReadnum(self, ctx:ZCodeParser.ReadnumContext):
-        return []
+        return CallStmt(Id(ctx.getChild(0)) , [])
 
 
-    # Visit a parse tree produced by ZCodeParser#writenum.
+    # writenum: 'writeNumber' LPAREN expr RPAREN ;
     def visitWritenum(self, ctx:ZCodeParser.WritenumContext):
-        return []
+        return CallStmt(Id(ctx.getChild(0)) , [self.visit(ctx.expr())])
 
 
-    # Visit a parse tree produced by ZCodeParser#readbool.
+    # readbool: 'readBool' LPAREN RPAREN ;
     def visitReadbool(self, ctx:ZCodeParser.ReadboolContext):
-        return []
+        return CallStmt(Id(ctx.getChild(0)) , [])
 
 
-    # Visit a parse tree produced by ZCodeParser#writebool.
+    # writebool: 'writeBool' LPAREN expr RPAREN ;
     def visitWritebool(self, ctx:ZCodeParser.WriteboolContext):
-        return []
+        return CallStmt(Id(ctx.getChild(0)) , [self.visit(ctx.expr())])
 
 
-    # Visit a parse tree produced by ZCodeParser#readstr.
+    # readstr: 'readString' LPAREN RPAREN ;
     def visitReadstr(self, ctx:ZCodeParser.ReadstrContext):
-        return []
+        return CallStmt(Id(ctx.getChild(0)) , [])
 
 
-    # Visit a parse tree produced by ZCodeParser#writestr.
+    # writestr: 'writeString' LPAREN expr RPAREN ;
     def visitWritestr(self, ctx:ZCodeParser.WritestrContext):
-        return []
+        return CallStmt(Id(ctx.getChild(0)) , [self.visit(ctx.expr())])
     
     # arraydecl: typ IDENTIFIER LBRACKET arraydim RBRACKET ARROW array ;
     def visitArraydecl(self, ctx: ZCodeParser.ArraydeclContext):
