@@ -8,7 +8,7 @@ options {
 	language = Python3;
 }
 
-program: stmt+ EOF;
+program: NEWLINE*? stmt (NEWLINE+ stmt)* NEWLINE+ EOF;
 
 // Statements
 stmt: (
@@ -24,7 +24,7 @@ stmt: (
 		| forstmt
 		| otherstmt
 		| expr
-	) NEWLINE+;
+	);
 
 // Declarations Variable declaration
 vardecl: typ (IDENTIFIER | expr7) (ARROW expr)?;
@@ -67,8 +67,8 @@ assignstmt: expr ARROW expr;
 
 // If statement
 ifstmt: IF expr NEWLINE* stmt elifstmt elsestmt;
-elifstmt: ELIF expr NEWLINE* stmt elifstmt |;
-elsestmt: ELSE stmt |;
+elifstmt: NEWLINE ELIF expr NEWLINE* stmt elifstmt |;
+elsestmt: NEWLINE ELSE stmt |;
 
 // For statement
 forstmt: FOR IDENTIFIER UNTIL expr BY expr NEWLINE? stmt;
@@ -78,13 +78,12 @@ otherstmt: breakstmt | continuestmt | returnstmt | blockstmt;
 breakstmt: BREAK;
 continuestmt: CONTINUE;
 returnstmt: RETURN expr?;
-blockstmt: BEGIN NEWLINE? stmt*? NEWLINE? END NEWLINE?;
+blockstmt: BEGIN NEWLINE stmt (NEWLINE stmt)* NEWLINE END;
 
 // Function call statement
 funccall: IDENTIFIER LPAREN paramlist RPAREN | builtin;
 paramlist: paramprime |;
-paramprime: param COMMA paramprime | param;
-param: literals | funccall | IDENTIFIER | expr;
+paramprime: expr COMMA paramprime | expr;
 
 // Expressions
 expr: expr1 ELLIPSIS expr1 | expr1;

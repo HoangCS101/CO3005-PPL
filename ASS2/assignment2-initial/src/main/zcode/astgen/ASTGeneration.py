@@ -208,14 +208,8 @@ class ASTGeneration(ZCodeVisitor):
     # paramprime: param COMMA paramprime | param;
     def visitParamprime(self, ctx:ZCodeParser.ParamprimeContext):
         if ctx.getChildCount() == 1:
-            return [self.visit(ctx.param())]
-        return [self.visit(ctx.param())] + self.visit(ctx.paramprime())
-
-    # param: literals | funccall | IDENTIFIER | expr;
-    def visitParam(self, ctx:ZCodeParser.ParamContext):
-        if ctx.IDENTIFIER():
-            return Id(ctx.IDENTIFIER().getText())
-        return self.visit(ctx.getChild(0))
+            return [self.visit(ctx.expr())]
+        return [self.visit(ctx.expr())] + self.visit(ctx.paramprime())
 
     # expr: expr1 ELLIPSIS expr1 | expr1;
     def visitExpr(self, ctx:ZCodeParser.ExprContext):
@@ -284,7 +278,8 @@ class ASTGeneration(ZCodeVisitor):
     def visitExpr7(self, ctx:ZCodeParser.Expr7Context):
         if ctx.getChildCount() == 1:
             return self.visit(ctx.expr9())
-        arr = Id(ctx.IDENTIFIER().getText()) if ctx.IDENTIFIER() else self.visit(ctx.funccall())
+        call_res = self.visit(ctx.funccall())
+        arr = Id(ctx.IDENTIFIER().getText()) if ctx.IDENTIFIER() else CallExpr(call_res.name, call_res.args)
         return ArrayCell(arr , self.visit(ctx.expr8()))
             
     # expr8: expr COMMA expr8 | expr;
@@ -300,7 +295,8 @@ class ASTGeneration(ZCodeVisitor):
         elif ctx.expr():
             return self.visit(ctx.expr())
         elif ctx.funccall():
-            return self.visit(ctx.funccall())
+            call_res = self.visit(ctx.funccall())
+            return CallExpr(call_res.name, call_res.args)
         return Id(ctx.IDENTIFIER().getText())
         
     # relationals: ASSIGN | EQUAL| NOT_EQUAL | LESS_THAN | GREATER_THAN | LESS_THAN_OR_EQUAL | GREATER_THAN_OR_EQUAL ;
