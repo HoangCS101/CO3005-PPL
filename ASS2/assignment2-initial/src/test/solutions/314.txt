@@ -1,0 +1,1 @@
+Program([VarDecl(Id(x), None, var, BinaryOp(..., NumLit(1.0), StringLit(thunder))), VarDecl(Id(x), None, var, BinaryOp(<=, NumLit(1.0), StringLit(zigzag))), VarDecl(Id(x), None, var, BinaryOp(or, BinaryOp(and, NumLit(1.0), NumLit(2.0)), NumLit(69.0)))])

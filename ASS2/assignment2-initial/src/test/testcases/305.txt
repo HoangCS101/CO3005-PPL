@@ -1,0 +1,3 @@
+var JoJo <- OraOra
+        string Dio <- Za("Wa","RuDo")
+        

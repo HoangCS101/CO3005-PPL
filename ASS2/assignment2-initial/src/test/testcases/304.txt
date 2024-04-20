@@ -1,7 +1,3 @@
-func inc(number a) return a + 1
-        func main() begin
-        var a <- 1
-        inc(a)
-        writeNumber(a)
-        end
+bool nah[1] <- iWin
+        number ded[3,4,5]
         

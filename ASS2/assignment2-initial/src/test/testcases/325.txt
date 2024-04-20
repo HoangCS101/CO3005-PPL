@@ -1,0 +1,12 @@
+
+        func main()
+        begin
+            var i <- 770
+            number j <- 0.35
+            for i until i <= 1000 by 41
+            begin
+                for j until j <= 20 by 4
+                    writeString(i and j)
+            end
+        end
+        

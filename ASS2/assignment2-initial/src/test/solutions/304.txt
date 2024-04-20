@@ -1,1 +1,1 @@
-Program([FuncDecl(Id(inc), [VarDecl(Id(a), NumberType, None, None)], Return(BinaryOp(+, Id(a), NumLit(1.0)))), FuncDecl(Id(main), [], Block([VarDecl(Id(a), None, var, NumLit(1.0)), CallStmt(Id(inc), [Id(a)]), CallStmt(Id(writeNumber), [Id(a)])]))])
+Program([VarDecl(Id(nah), ArrayType([1.0], BoolType), None, Id(iWin)), VarDecl(Id(ded), ArrayType([3.0, 4.0, 5.0], NumberType), None, None)])

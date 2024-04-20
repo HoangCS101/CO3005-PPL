@@ -1,0 +1,1 @@
+Program([VarDecl(Id(JoJo), None, var, Id(OraOra)), VarDecl(Id(Dio), StringType, None, CallExpr(Id(Za), [StringLit(Wa), StringLit(RuDo)]))])

@@ -1,0 +1,5 @@
+
+            var x <- 1 ... "thunder"
+            var x <- 1 <= "zigzag"
+            var x <- 1 and 2 or 69
+        

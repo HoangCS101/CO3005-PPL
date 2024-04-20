@@ -1,0 +1,1 @@
+Program([VarDecl(Id(ligma), None, dynamic, BinaryOp(+, StringLit(baguette), StringLit(NOW!)))])

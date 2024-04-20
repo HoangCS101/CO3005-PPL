@@ -1,0 +1,1 @@
+Program([VarDecl(Id(bob), ArrayType([2.0, 3.0], NumberType), None, ArrayCell(Id(lik), [NumLit(4.0), NumLit(5.0)]))])

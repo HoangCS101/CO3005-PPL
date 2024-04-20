@@ -1,0 +1,10 @@
+
+        func main()
+            begin
+                var c <- 56e3
+                dynamic d <- 3.14
+                dynamic halo
+                number three[3e3] <- 3.3
+                string meep[3.00]
+            end
+        

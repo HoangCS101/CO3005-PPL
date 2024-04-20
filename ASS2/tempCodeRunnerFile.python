@@ -1,0 +1,19 @@
+def generate_test_cases(start, end):
+    test_cases = []
+    for i in range(start, end + 1):
+        input_code = f"""number a{i}
+        """
+        expected_output = str(Program([VarDecl(Id(f"a{i}"), NumberType())]))
+        test_case = f"def test_simple_program{i}(self):\n" \
+                    f"    input = \"{input_code}\"\n" \
+                    f"    expect = \"{expected_output}\"\n" \
+                    f"    self.assertTrue(TestAST.test(input, expect, {i}))\n\n"
+        test_cases.append(test_case)
+
+    return "\n".join(test_cases)
+
+# Generate test cases from 300 to 399
+test_cases_code = generate_test_cases(300, 399)
+
+# Print or use test_cases_code as needed
+print(test_cases_code)
