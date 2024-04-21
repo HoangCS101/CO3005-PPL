@@ -1,0 +1,10 @@
+
+        func main()
+        begin
+            for i until i <= 10 by 2
+            begin
+                var j <- 0
+            end
+            break
+        end
+        
